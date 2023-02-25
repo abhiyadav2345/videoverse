@@ -8,7 +8,7 @@ const SearchBar = () => {
       component="form"
       onSubmit={() => {}}
       sx={{
-        borderRadius: 5,
+        borderRadius: 20,
         border: "1px solid #e3e3e3",
         p1: 2,
         boxShadow: "none",
