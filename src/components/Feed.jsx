@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import { SideBar } from "./index.js";
+import { SideBar, Videos } from "./index.js";
+import fetchFromApi from "../utils/fetchFromAPI";
 
 const Feed = () => {
+
+ 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box
@@ -12,7 +15,7 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <SideBar>fdsfsdf</SideBar>
+        <SideBar />
         <Typography
           className="coppyright"
           variant="body2"
@@ -20,6 +23,17 @@ const Feed = () => {
         >
           Copyright 2022 JSM Media
         </Typography>
+      </Box>
+      <Box p={2} sx={{ iverflowY: "auto", height: "90vh" }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{ color: "white" }}
+        >
+          New <span style={{ color: "#f31503" }}>Videos</span>
+        </Typography>
+        <Videos videos={[]} />
       </Box>
     </Stack>
   );
