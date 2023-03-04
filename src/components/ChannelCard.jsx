@@ -8,39 +8,65 @@ import {
   demoChannelTitle,
 } from "../utils/constants";
 
-const ChannelCard = ({ channelDetails: { snippet } }) => {
+const ChannelCard = ({ channelDetails }) => {
   return (
-    <Box>
+    <Box
+      sx={{
+        boxShadow: "none",
+        borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        height: "326px",
+        margin: "auto",
+        width: { xs: "326px", md: "320px" },
+        alignItems: "center",
+      }}
+    >
       <Link
         to={
-          snippet.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl
+          channelDetails?.snippet?.channelId
+            ? `/channel/${channelDetails.snippet?.channelId}`
+            : demoChannelUrl
         }
       >
-        <CardMedia
-          image={snippet?.thumbnails?.medium?.url}
-          alt={snippet?.channelTitle}
-          sx={{ width: 350, height: 180, backgroundColor: "#fff" }}
-        />
-      </Link>
-      <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
-        <Link
-          to={
-            snippet?.channelId
-              ? `/channel/${snippet?.channelId}`
-              : demoChannelUrl
-          }
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "#1e1e1e",
+            textAlign: "center",
+            justifyContent: "center",
+            color: "#fff",
+          }}
         >
-          <Typography
-            variant="subtitle1"
-            fontWeight="bold"
-            color="#fff"
-            sx={{ fontSize: 20, textAlign: "center" }}
-          >
-            {snippet?.channelTitle || demoChannelTitle}
+          <CardMedia
+            image={
+              channelDetails?.snippet?.thumbnails?.high?.url ||
+              demoProfilePicture
+            }
+            alt={channelDetails.snippet?.channelTitle}
+            sx={{
+              width: "180px",
+              height: "180px",
+              backgroundColor: "#fff",
+              borderRadius: "50%",
+              border: "1px solid #e3e3e3",
+            }}
+          />
+          <Typography variant="h6">
+            {channelDetails?.snippet?.channelTitle || demoChannelTitle}
             <CheckCircle sx={{ fontSize: 16, color: "gray", ml: "5px" }} />
           </Typography>
-        </Link>
-      </CardContent>
+          {channelDetails?.statistics?.subscriberCount && (
+            <Typography>
+              {parseInt(
+                channelDetails?.statistics?.subscriberCount
+              ).toLocaleString()}
+              Subscribers
+            </Typography>
+          )}
+        </CardContent>
+      </Link>
     </Box>
   );
 };
