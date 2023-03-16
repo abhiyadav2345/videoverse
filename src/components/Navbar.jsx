@@ -1,4 +1,5 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import { red } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import { logo } from "../utils/constants";
 import { SearchBar } from "./index.js";
@@ -18,7 +19,8 @@ const Navbar = () => {
       }}
     >
       <Link to="/" style={{ display: "flex", alignItems: "center" }}>
-        <img src={logo} alt="logo" height={45} />
+        <img src={logo} alt="logo" height={45} /> 
+        <Typography variant="h4" fontWeight="bold" color="#fff">&nbsp; Utube for Programmers</Typography>
       </Link>
       <SearchBar />
     </Stack>
