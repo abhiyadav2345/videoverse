@@ -20,7 +20,7 @@ const Navbar = () => {
     >
       <Link to="/" style={{ display: "flex", alignItems: "center" }}>
         <img src={logo} alt="logo" height={45} /> 
-        <Typography variant="h4" fontWeight="bold" color="#fff">&nbsp; Utube for Programmers</Typography>
+        <Typography variant="h4" fontWeight="bold" color="#fff">&nbsp; CodeTube</Typography>
       </Link>
       <SearchBar />
     </Stack>
